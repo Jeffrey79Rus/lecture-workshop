@@ -1,0 +1,34 @@
+# Office 임시 파일
+~$*
+*.tmp
+.~lock.*
+
+# Google Drive 시스템 파일
+*.gdoc
+*.gsheet
+*.gslides
+
+# ── 비밀키·인증 정보 (표준 블록) ──
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+secrets/
+.aws/
+.ssh/
+
+# ── Claude Code 로컬 설정 ──
+.claude/settings.local.json
+.claude/*.local.*
+CLAUDE.local.md
+
+# ── OS·편집기 임시 파일 ──
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
