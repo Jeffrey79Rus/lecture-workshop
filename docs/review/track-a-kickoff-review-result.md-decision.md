@@ -1,7 +1,7 @@
 # 반영 판단서 — Track A 킥오프 아젠다 리서치 Codex 교차검증 (Round 1·2 부합성 포함)
 
 - 결과 id: review-track-a-kickoff-review-20261103-151736 · Codex 결과: docs/review/track-a-kickoff-review-result.md · 원본: track-a-kickoff/01_client-challenges-research.html (v3)
-- 판단: Claude (2026-11-03) · 병합 결정: 사람 (대기)
+- 판단: Claude (2026-11-03) · 병합 결정: 사람 (2026-11-03 전체 병합 승인)
 - 요약: 반영 5 · 부분 반영 6 · 기각 0 · 보류 0 (C9의 한 하위 지적만 기각, C8의 규칙 채택은 킥오프 결정)
 
 | # | 지적 요약 | 위치 | 중요도 | 결정 | 근거 |
@@ -19,10 +19,10 @@
 | C11 | ③ "시장은 핑계가 되지 않는다" | 04장 | 경미 | 반영 | 교체 |
 
 ## 보류 — 사람 확인 필요
-- C8: 'Joint Case 후보사 2곳 미확보 시 해당 아젠다 추천 보류' 규칙을 킥오프 결정 기준으로 채택할지.
+- C8: 'Joint Case 후보사 2곳 미확보 시 해당 아젠다 추천 보류' 규칙 → 총괄 책임자 채택 확정 (2026-11-03).
 
 ## 반영안
 - 파일: track-a-kickoff/01_client-challenges-research.proposal.html (v4 반영안, 원본 v3는 그대로)
 
 ## 병합 기록
-- (사람 결정 후 기입)
+- 2026-11-03 전체 병합 (C1~C11) — 백업: track-a-kickoff/01_client-challenges-research.html.bak-20261103
