@@ -1,0 +1,5 @@
+.pipeline/worktrees/
+.pipeline/runs/*
+!.pipeline/runs/.gitkeep
+.pipeline/state/
+.pipeline/PAUSE
