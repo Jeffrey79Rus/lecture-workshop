@@ -1,0 +1,12 @@
+{
+  "id": "review-track-a-kickoff-review-20261103-151736",
+  "at": "2026-11-03T15:17:36.034Z",
+  "triage": "pending",
+  "kind": "review",
+  "request": "track-a-kickoff-review.md",
+  "title": "Track A 킥오프 아젠다 리서치 Codex 교차검증 (Round 1·2 부합성 포함)",
+  "prompt": ".pipeline/redacted/track-a-kickoff-review/prompt.md",
+  "output": "docs/review/track-a-kickoff-review-result.md",
+  "status": "done",
+  "attempts": 1
+}
