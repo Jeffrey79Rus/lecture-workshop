@@ -1,0 +1,204 @@
+<title>Track A 킥오프 슬라이드 초안</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 16:9 슬라이드 프레임 3장을 세로로 나열. 각 프레임은 헤드 메시지(액션 타이틀) + 본문 그리드 + 하단 Note/Source. PPT 전환 시 장표 1장 = 프레임 1개. */
+:root{
+  --bg:#EEF0F3; --paper:#FFFFFF; --fg:#1B2230; --muted:#5B6473; --line:#D5DAE2;
+  --accent:#1E3A5F; --accent-soft:#E6EDF6; --amber:#B86E00; --amber-soft:#FFF4E0; --ok:#2E7D4F; --ok-soft:#E4F2EA; --bad:#9A3B3B; --bad-soft:#F7E4E4; --tag:#F1F3F6;
+  --display:"IBM Plex Sans KR","Noto Sans KR",system-ui,sans-serif;
+  --body:"Noto Sans KR","IBM Plex Sans KR",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#12161D; --paper:#1A202A; --fg:#E7EAF0; --muted:#A3ACBA; --line:#2E3645;
+  --accent:#8FB3E0; --accent-soft:#1F2C3E; --amber:#F0B45A; --amber-soft:#3A2D14; --ok:#6FCB95; --ok-soft:#1C3328; --bad:#E58A8A; --bad-soft:#3D2222; --tag:#242C38; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#12161D; --paper:#1A202A; --fg:#E7EAF0; --muted:#A3ACBA; --line:#2E3645;
+  --accent:#8FB3E0; --accent-soft:#1F2C3E; --amber:#F0B45A; --amber-soft:#3A2D14; --ok:#6FCB95; --ok-soft:#1C3328; --bad:#E58A8A; --bad-soft:#3D2222; --tag:#242C38; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 56px}
+.wrap{max-width:1120px;margin:0 auto}
+h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--accent)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)} .small{font-size:12.5px}
+header.top{padding-block:40px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(22px,3.5vw,30px);font-weight:700}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;color:var(--muted)}
+.meta b{color:var(--fg);font-weight:500}
+
+/* slide frame */
+.slide{background:var(--paper);border:1px solid var(--line);margin-top:28px;padding:26px 34px 20px;display:grid;grid-template-rows:auto auto 1fr auto;gap:12px;min-width:0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+@media (min-width:900px){.slide{aspect-ratio:16/9}}
+.slide .no{font-family:var(--mono);font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between}
+.slide h2{font-size:clamp(17px,2vw,21px);font-weight:600;color:var(--fg);border-bottom:2px solid var(--accent);padding-bottom:8px}
+.slide h2 small{display:block;font-size:12.5px;font-weight:400;color:var(--muted);margin-bottom:4px;font-family:var(--mono);letter-spacing:.06em}
+.body{min-width:0;display:grid;gap:12px}
+.foot{border-top:1px solid var(--line);padding-top:8px;font-size:11.5px;color:var(--muted);display:grid;gap:2px}
+
+.cols{display:grid;gap:14px;min-width:0}
+.c2{grid-template-columns:1.15fr 1fr} .c3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:760px){.c2,.c3{grid-template-columns:1fr}}
+.colhead{font-family:var(--display);font-size:12.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:3px;display:inline-block;margin-bottom:8px}
+.colhead.ok{background:var(--ok-soft);color:var(--ok)} .colhead.bad{background:var(--bad-soft);color:var(--bad)}
+.item{border:1px solid var(--line);border-left:4px solid var(--accent);padding:9px 12px;display:grid;gap:3px;min-width:0}
+.item+.item{margin-top:8px}
+.item.r2{border-left-color:var(--amber)} .item.bridge{border-left-color:var(--ok)} .item.out{border-left-color:var(--bad);background:var(--tag)}
+.item .t{font-family:var(--display);font-weight:600;font-size:14px}
+.item .t .pill{font-family:var(--mono);font-weight:400;font-size:10.5px;padding:1px 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted);margin-left:6px;white-space:nowrap;vertical-align:2px}
+.item .why{font-size:12.8px}
+.item .why b{color:var(--accent)}
+.item.out .why b{color:var(--bad)}
+.strip{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;font-size:11.5px}
+@media (max-width:760px){.strip{grid-template-columns:repeat(2,1fr)}}
+.strip div{background:var(--tag);padding:6px 8px;border-radius:3px;line-height:1.4}
+.strip b{display:block;font-family:var(--display);color:var(--accent);font-size:12px}
+
+/* slide 2 */
+.tk{border:1px solid var(--line);padding:14px 16px;display:grid;gap:8px;min-width:0}
+.tk .label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
+.tk .q{font-family:var(--display);font-size:clamp(15px,1.6vw,18px);font-weight:600;line-height:1.4}
+.tk .q em{font-style:normal;color:var(--amber)}
+.boxes{display:grid;gap:6px}
+.b3{grid-template-columns:repeat(3,1fr)} .b4{grid-template-columns:repeat(4,1fr)}
+.boxes div{background:var(--accent-soft);color:var(--accent);font-family:var(--display);font-weight:600;font-size:12.5px;text-align:center;padding:7px 4px;border-radius:3px}
+.tk .why{font-size:12.5px;display:grid;gap:2px}
+.tk .why span::before{content:"· "}
+.synth{background:var(--amber-soft);border-left:3px solid var(--amber);padding:10px 14px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:center;font-size:13px}
+.synth .label{font-family:var(--mono);font-size:11px;color:var(--amber)}
+.synth .q{font-family:var(--display);font-weight:600;font-size:14.5px}
+@media (max-width:760px){.synth{grid-template-columns:1fr}}
+
+/* slide 3 */
+table{border-collapse:collapse;width:100%;font-size:12.5px;table-layout:fixed}
+th,td{padding:7px 9px;border:1px solid var(--line);vertical-align:top;text-align:left}
+th{font-family:var(--display);font-weight:600;background:var(--tag);font-size:12px}
+th.r1{color:var(--accent)} th.r2{color:var(--amber)}
+td.k{font-family:var(--display);font-weight:600;background:var(--tag);width:92px;font-size:12px}
+td.bridge{background:var(--ok-soft);text-align:center;font-weight:600;color:var(--ok)}
+td b.q{color:var(--accent)}
+.tbl-wrap{overflow-x:auto}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div class="eyebrow">Pharma Growth Forum 2027 · Track A / Strategy &amp; Launch · 내부 킥오프 슬라이드 초안</div>
+  <h1>Track A 킥오프: 논의항목 1·2·3 슬라이드 초안 (3장)</h1>
+  <p>장표 1장 = 아래 프레임 1개입니다. 헤드 메시지는 액션 타이틀로 썼고, 각 제안 옆에 이유(rationale)를 한 줄씩 붙였습니다. 확정 후 IQVIA 템플릿 PPT로 옮깁니다. 근거 번호(T1~T6)는 <a href="https://claude.ai/artifact/Xhyq6YnPRoqPeNCU4PFJsx">리서치 본문 v6</a>를 가리킵니다.</p>
+  <div class="meta"><span>작성일 <b>2026-11-05</b></span><span>작성 <b>MC 전략컨설팅 Track A 준비팀</b></span><span>상태 <b>v1 초안 · 킥오프 논의용</b></span></div>
+</header>
+
+<!-- ============ SLIDE 1 ============ -->
+<article class="slide">
+  <div class="no"><span>TRACK A / STRATEGY &amp; LAUNCH · 킥오프 논의항목 1</span><span>1 / 3</span></div>
+  <h2><small>핵심 CLIENT CHALLENGE</small>후보 6개 중 Round 질문·Track 경계·Joint Case 확보 가능성을 기준으로 3개를 선정하고, 겹치거나 폭이 좁은 3개는 사례·맥락으로 돌림</h2>
+  <div class="body">
+    <div class="cols c2">
+      <div>
+        <span class="colhead ok">선정 3개</span>
+        <div class="item">
+          <div class="t">1. 특허절벽과 미국 약가 레짐 아래, 한국의 성장 기회는 어디로 이동하는가<span class="pill">Round 1 · Where to play</span></div>
+          <div class="why"><b>왜:</b> 본사가 2027~30년 특허만료 공백(약 2,000~3,000억 달러)을 메우느라 런칭 자원을 소수 자산에 집중하고 미국 약가 정책으로 런칭 순서를 다시 짜는 중. MNC 지사(참석 60%)가 2027년 초 본사와 해야 하는 대화이고, 국내사에게는 '제네릭 약가 45% 이후 성장축'으로 읽힘. Round 1 질문에 가장 직접적. 매트릭스 26/30.</div>
+        </div>
+        <div class="item r2">
+          <div class="t">2. AI 에이전트가 바꾸는 Launch Operating Model<span class="pill">Round 2 · 고정 아젠다</span></div>
+          <div class="why"><b>왜:</b> 다수 런칭(연 50~55개)을 제한된 준비 역량으로 치러야 하는 2027년, AI 에이전트를 사용·평가 중인 47% 중 실제 배포는 22%. 질문은 '쓸까'가 아니라 '어느 준비 업무부터, 누가, 어떤 통제로'. '런칭 준비 조직과 의사결정'으로 한정해 Track C(참여·성과의 AI)와 구분. 배정 부서(MC·Analytics·Tech) 역량과 일치. 26/30.</div>
+        </div>
+        <div class="item bridge">
+          <div class="t">3. '사 온 자산'의 시대: 외부 자산을 성장과 런칭으로 바꾸는 법<span class="pill">두 Round 공통 Joint Case</span></div>
+          <div class="why"><b>왜:</b> 빅파마 대형 딜의 절반 가까이가 중국·한국 자산. MNC에겐 인라이선스 자산의 한국 기회 평가, 국내사에겐 기술수출 뒤 남은 한국 권리의 상업화(선급금은 총액의 4~7%). Round 1 '선택'→Round 2 '준비'로 이어지는 다리이며 Joint Case 확보 가능성 최고. 독립 세션으로 두면 Round 귀속이 모호해 공통 사례로 배치(Codex 교차검증 반영). 25/30.</div>
+        </div>
+      </div>
+      <div>
+        <span class="colhead bad">탈락 3개와 이유</span>
+        <div class="item out">
+          <div class="t">D. 한국 약가·급여 제도 전환기의 Launch Excellence<span class="pill">→ 2의 맥락으로</span></div>
+          <div class="why"><b>탈락 이유:</b> 고객 절실도는 5개 후보 중 최고(제네릭 45%, ICER 상향, 유연계약)지만, 급여·가격·접근성 실행은 <b>Track B Round 2</b>가 정확히 소유하는 주제라 'Track 간 중복 없음' 1점으로 탈락 조건(2점 이하)에 해당. 검증에서 '100일 등재'도 희귀신약 시범사업(5개 이내)에 한정되어 전제가 약해짐. 20/30.</div>
+        </div>
+        <div class="item out">
+          <div class="t">E. 비만·대사질환 메가 카테고리의 경쟁 런칭<span class="pill">→ 1의 사례로</span></div>
+          <div class="why"><b>탈락 이유:</b> 경구 GLP-1 2종의 2027년 한국 상륙 가능성으로 시의성은 높지만, 500명 중 직접 해당 기업이 소수라 '참석자 폭' 2점. 시장·환자·채널·가격을 함께 다루면 Track B·C·플레너리와 모두 겹침. '비급여 시장이라는 성장 기회' 사례로 1에 흡수. 20/30.</div>
+        </div>
+        <div class="item out">
+          <div class="t">F. 런칭 성과 격차: 첫해 처방의 65%가 조제되지 않는 문제<span class="pill">→ 후보군 제외</span></div>
+          <div class="why"><b>탈락 이유:</b> 리서치 초기에 검토했으나 미조제의 원인이 급여 거절(49%p)·환자 포기(17%p)라는 <b>접근성 문제</b>라 Track B 영역. Track A는 '접근성·공급·필드 준비가 승인 전에 맞물리는 교차기능 핸드오프'까지만 2에서 다룸. 후보 A~E에 넣지 않음.</div>
+        </div>
+      </div>
+    </div>
+    <div class="strip">
+      <div><b>선정 기준 6개</b>고객 절실도 · Round 질문 적합 · Track 간 중복 없음 · 배정 BU 역량 · Joint Case 확보 가능성 · 참석자 폭 (각 5점)</div>
+      <div><b>탈락 조건 1</b>'Track 간 중복 없음' 2점 이하면 독립 아젠다 제외</div>
+      <div><b>탈락 조건 2</b>11/27까지 Joint Case 후보사 2곳 미확보 시 추천 보류</div>
+      <div><b>Track B 경계</b>급여·가격·접근성 실행은 다루지 않음</div>
+      <div><b>Track C 경계</b>HCP 참여·Next-best Action·성과 최적화는 다루지 않음</div>
+      <div><b>검증</b>사실검증 3축 9.5 · Codex 교차검증 11건 반영</div>
+    </div>
+  </div>
+  <div class="foot"><span>Note: 점수는 준비팀 1차 판단(5점 척도, 6개 기준 동일 가중). 후보 A·B·C는 각각 본문의 2·1·3에 해당.</span><span>Source: 리서치 본문 v6 T1·T2·T3·T4·T5·T6 (IQVIA Institute 2026, Evaluate, CMS·KFF, Federal Register 2026.4, NVIDIA 2026, 복지부 건정심 2026.3.26, 공시 보도)</span></div>
+</article>
+
+<!-- ============ SLIDE 2 ============ -->
+<article class="slide">
+  <div class="no"><span>TRACK A / STRATEGY &amp; LAUNCH · 킥오프 논의항목 2</span><span>2 / 3</span></div>
+  <h2><small>KEY TAKEAWAY</small>참석 리더가 행사장을 나서며 기억할 문장은 Round별 하나씩, '다시 선택해야 한다'와 '도입률이 아니라 병목'</h2>
+  <div class="body">
+    <div class="cols c2" style="grid-template-columns:1fr 1fr">
+      <div class="tk">
+        <div class="label">TAKEAWAY ① · ROUND 1</div>
+        <div class="q">"2027년의 성장 기회는 시장을 <em>찾는</em> 데서 끝나지 않는다. 외부환경 변화에 맞춰 치료영역·자산·출시 순서를 <em>다시 선택</em>해야 한다."</div>
+        <div class="boxes b3"><div>치료영역</div><div>자산</div><div>출시 순서</div></div>
+        <div class="why">
+          <span><b>왜 이 문장:</b> Round 1 질문('기회는 어디에')의 2027년 답은 지역·질환 선택에서 끝나지 않는다. 본사 자원 재배분, 런칭 순서, 외부 자산 소싱이 함께 바뀌므로 핵심 동사는 '다시 선택'.</span>
+          <span><b>리더급 청중</b>에게 분석 결과가 아니라 '해야 할 결정'을 남긴다.</span>
+          <span><b>근거:</b> T1 특허절벽 · T2 IRA·MFN·관세 · T3 외부 자산 과반. Challenge 1·3 관통.</span>
+          <span><b>교체 이력:</b> v3 "발견이 아니라 만드는 것"은 시장 분석과 포트폴리오 결정을 불필요한 양자택일로 만든다는 교차검증 지적으로 수정.</span>
+        </div>
+      </div>
+      <div class="tk">
+        <div class="label">TAKEAWAY ② · ROUND 2</div>
+        <div class="q">"AI 에이전트의 가치는 <em>도입률</em>이 아니라 런칭 준비의 <em>병목을 얼마나 줄이는가</em>로 결정된다. 우선 업무와 역할·데이터·통제를 함께 설계해야 한다."</div>
+        <div class="boxes b4"><div>우선 업무</div><div>역할</div><div>데이터</div><div>통제</div></div>
+        <div class="why">
+          <span><b>왜 이 문장:</b> 사용·평가 47% 대 배포 22%의 간극은 기술 부족이 아니라 '어느 업무부터, 누가, 어떤 통제로'를 정하지 못한 결과. '도입률'과 '병목'을 대비시킨다.</span>
+          <span><b>Track C 구분:</b> Track C는 'AI로 성과를 높이는 법', Track A는 '런칭 준비의 병목'이라는 다른 단어로 자리가 갈린다.</span>
+          <span><b>근거:</b> T5 NVIDIA 2026 · T4 연 50~55개 런칭 · T1 LOE 공백. Challenge 2 관통.</span>
+          <span><b>교체 이력:</b> v3 "조직을 함께 바꾼 회사에만 온다"는 성과 비교 자료 없는 단정이라 수정.</span>
+        </div>
+      </div>
+    </div>
+    <div class="synth">
+      <div class="label">종합 세션용 ③ (15:35 전체 세션, Track Chair)</div>
+      <div class="q">"외부환경이 불확실할수록 성장 선택(Round 1)과 런칭 준비(Round 2)의 연결이 2027년 한국 제약의 성패를 가른다."</div>
+      <div class="label">왜</div>
+      <div class="small">①과 ②를 '연결'이라는 한 단어로 묶어 Track A를 한 문장으로 요약. v3 "시장은 핑계가 되지 않는다"는 근거 없는 가치판단이라 교체.</div>
+    </div>
+  </div>
+  <div class="foot"><span>Note: ①·②는 Session Brief(Gate 1)의 Takeaway 칸에 그대로 제출. ③은 Track Chair 종합 발표용.</span><span>Source: 리서치 본문 v6 T1·T2·T3·T4·T5; Codex 교차검증 C10·C11</span></div>
+</article>
+
+<!-- ============ SLIDE 3 ============ -->
+<article class="slide">
+  <div class="no"><span>TRACK A / STRATEGY &amp; LAUNCH · 킥오프 논의항목 3</span><span>3 / 3</span></div>
+  <h2><small>SESSION · DISCUSSION TOPIC</small>Round 1은 '기회 지도 다시 그리기', Round 2는 '에이전트에게 먼저 맡길 준비 업무'로 세션을 짜고, '사 온 자산' 사례 하나로 두 Round를 잇는다</h2>
+  <div class="body">
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th style="width:92px"></th><th class="r1">Session 1 · Round 1 (13:10–14:00) "2027 한국 성장 기회 지도, 다시 그리기"</th><th class="r2">Session 2 · Round 2 (14:20–15:10) "런칭 준비 업무 중 에이전트에게 먼저 맡길 것"</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Insight 10'</td><td><b>INFO·PI.</b> 플레너리 Outlook 수치를 받아 '어디로 이동하는가'로 한 단계 내려감. 치료영역·환자군·자산 유형별 기회 변화 지도. 첫 장은 PI 사전 설문(참석 리더의 2027 우선 치료영역).</td><td><b>MC·Analytics·Tech.</b> 첫 2분 Round 1 요약 → 런칭 압력(연 50~55개, LOE 공백)과 에이전트 현황(47%/22%) → 마지막 3분, 런칭 준비도 점검 업무 하나를 에이전트 워크플로로 시연.</td></tr>
+        <tr><td class="k">Joint Case 15'</td><td><b>MC + MNC 지사 임원.</b> 한국 런칭을 본사 우선순위로 올린 사례, 또는 기회 지도를 다시 그려 포트폴리오를 재배분한 사례.</td><td><b>MC + MNC 지사 런칭 리더.</b> Launch PMO·예측에 AI를 실제 적용한 사례. 무엇을 맡겼고 무엇은 사람이 지켰는지.</td></tr>
+        <tr><td class="k">Discussion 15'</td><td>사회: Round 1 Lead. 패널: 국내 제약사 임원 1, 바이오 신사업 대기업 임원 1, Joint Case 발표자.<br><b class="q">핵심 질문: "당신 회사의 2027 기회 지도는 작년과 무엇이 다른가? 그래서 무엇을 그만둘 것인가?"</b></td><td>사회: Round 2 Lead. 패널: 국내 제약사 임원 1, IQVIA Domain Expert 1(HTA/HE 또는 CES, '준비 체크포인트'만), Joint Case 발표자.<br><b class="q">핵심 질문: "어떤 준비 업무를 먼저 에이전트에게 맡기고, 어떤 결정은 끝까지 사람이 지킬 것인가?"</b></td></tr>
+        <tr><td class="k">왜 이렇게</td><td>오전 플레너리에 Outlook이 이미 있어 Insight는 '전망'이 아니라 '이동'에 집중. 리더에게 가장 어려운 결정은 '무엇을 그만둘까'라 질문에 넣음. MNC(Joint Case)·국내사·대기업(패널)을 나눠 모두에게 '내 이야기'.</td><td>말로만 하면 Track C와 같아 보이므로 시연 3분으로 Track A의 자리('런칭 준비')를 보임. 교차기능 전문가는 발언 범위를 한정해 Track B·C 영역으로 넘어가지 않게 함.</td></tr>
+        <tr><td class="k">넘김</td><td>→ Round 2: "기회를 골랐다면, 그 런칭을 누가 어떻게 준비하는가? 14:20에 이어집니다."</td><td>→ Track B(급여 전략), Track C(HCP 참여의 AI), 종합 세션(Takeaway ③)</td></tr>
+        <tr><td class="k">공통 사례</td><td class="bridge" colspan="2">Discussion Topic 3 · "사 온 자산의 런칭: 선택과 준비는 어떻게 다른가" — 별도 세션이 아니라 두 Round의 Joint Case에 같은 실마리. R1 "자체 개발 자산과 사 온 자산을 같은 잣대로 고르고 있는가?" → R2 "사 온 자산의 데이터 공백과 파트너 역할은 누가 메우는가?" 같은 회사가 두 Round에 서면 가장 강함.<br><span class="small" style="font-weight:400;color:var(--fg)">왜: 공통 사례로 두어야 Round 귀속이 분명해짐(교차검증). 2026년 한미–릴리, 오스코텍–아지오스 딜과 중국 자산 과반이 행사 시점에 가장 생생해 청중이 바로 자기 일로 받아들임.</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div class="foot"><span>Note: 세션 형식(Insight 10 · Joint Case 15 · Discussion 15 · Q&amp;A 10)과 시작 시각은 기획서 4·6장. 종료 시각과 블록별 담당은 준비팀 제안. Joint Case 후보사는 11/27까지 Round별 2곳 확보.</span><span>Source: 기획서 초안(2026.11), 리서치 본문 v6, Codex 교차검증 C4</span></div>
+</article>
+
+</div>
