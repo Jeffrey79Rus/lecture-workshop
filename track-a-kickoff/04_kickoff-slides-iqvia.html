@@ -1,0 +1,230 @@
+<title>Track A 킥오프 IQVIA 장표</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: 페이지 = 버전 탭(상세본/간략본) + 13.333x7.5in 슬라이드 캔버스(1280x720px)를 화면 폭에 맞춰 축소.
+   슬라이드 캔버스는 PPT 그대로 흰 바탕 단일 룩. 페이지 바탕·탭만 테마를 따름. 색은 IQVIA 템플릿 테마 토큰. */
+:root{
+  --pg:#E9ECF0; --pgfg:#2B3A42; --pgmuted:#606B71; --pgline:#D0D5DC; --pgcard:#FFFFFF;
+  --text:#2B3A42; --text2:#606B71; --blue:#00A3E0; --navy:#005587; --navy50:#7FAAC3; --navy25:#BFD4E1;
+  --blue25:#BFE8F7; --callout:#C6EFFF; --lg:#F3F3F3; --g85:#D9D9D9; --g75:#BFBFBF; --g65:#A6A6A6; --red:#C00000;
+  --kr:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  --font:Arial,var(--kr);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --pg:#14181E; --pgfg:#E7EAF0; --pgmuted:#A3ACBA; --pgline:#2E3645; --pgcard:#1C222C; color-scheme:dark } }
+:root[data-theme="dark"]{ --pg:#14181E; --pgfg:#E7EAF0; --pgmuted:#A3ACBA; --pgline:#2E3645; --pgcard:#1C222C; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--pg);color:var(--pgfg);font-family:var(--font);font-size:14px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1280px;margin:0 auto}
+header.top{padding-block:32px 14px;display:grid;gap:8px}
+header h1{margin:0;font-size:clamp(20px,3vw,26px);font-weight:700}
+header p{margin:0;color:var(--pgmuted);font-size:13.5px;max-width:80ch}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.tabs a{font-size:14px;font-weight:700;text-decoration:none;padding:8px 16px;border:1px solid var(--pgline);border-radius:3px;color:var(--pgfg);background:var(--pgcard)}
+.tabs a[aria-current="true"]{background:#005587;border-color:#005587;color:#fff}
+.tabs a:focus-visible{outline:2px solid #00A3E0;outline-offset:2px}
+.ver{display:grid;gap:22px;margin-top:18px}
+.ver > .cap{font-size:13px;color:var(--pgmuted)}
+.frame{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.18);background:#fff}
+.frame .slide{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0;transform:scale(var(--k,1))}
+.noscript-note{font-size:12px;color:var(--pgmuted)}
+
+/* ---------- slide canvas (PPT 서식 그대로) ---------- */
+.slide{background:#fff;color:var(--text);font-family:var(--font);overflow:hidden;word-break:keep-all;overflow-wrap:anywhere}
+.slide sup{font-size:.62em;line-height:0;vertical-align:.55em;color:var(--navy);font-weight:700;margin-left:1px}
+.ph,.bx{position:absolute;overflow:hidden}
+.ph.tag{font-size:21.33px;font-weight:700;color:var(--blue);text-align:right;padding:0 9.6px;display:flex;align-items:center;justify-content:flex-end}
+.ph.sub{font-size:26.67px;font-weight:700;color:var(--blue);padding:0 9.6px;display:flex;align-items:center}
+.ph.head{font-size:26.67px;font-weight:700;color:var(--text);line-height:.98;padding:4.8px 9.6px;letter-spacing:-.2px}
+.ph.foot{font-size:10.67px;color:var(--text);padding:0 9.6px;display:flex;align-items:flex-end;line-height:1.2}
+.ph.logo{font-size:9px;color:#9AA4AA;border:1px dashed #C9D0D5;display:flex;align-items:center;justify-content:center;letter-spacing:.2px}
+.ph.pno{font-size:10.67px;color:#959CA0;text-align:right}
+
+.bx{font-size:16px;line-height:1.2;padding:9.6px}
+.bx.colhead{border-top:4px solid var(--blue);padding:5px 9.6px 0;font-size:21.33px;font-weight:700;color:var(--text)}
+.bx.colhead em{font-style:normal;font-weight:400;font-size:16px;color:var(--text2);margin-left:8px}
+/* study S1 */
+.bx.lab{color:#fff;display:flex;align-items:center;justify-content:center;font-size:18.67px;padding:0}
+.bx.card{background:var(--lg);display:flex;flex-direction:column;gap:5px}
+.bx.card .ct{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.bx.card .t{font-size:18.67px;font-weight:700;color:var(--navy);line-height:1.15}
+.bx.card .t i{font-style:normal;font-size:16px;font-weight:700;color:#fff;background:var(--blue);padding:1px 6px;border-radius:2px;vertical-align:3px;margin-left:4px}
+.bx.card .sc{font-size:21.33px;font-weight:700;color:var(--navy);flex:none}
+.bx.card .cw{font-size:16px;line-height:1.2}
+.bx.card.rej{background:#fff;border:1px solid var(--g85);border-left:6px solid var(--g65)}
+.bx.card.rej .t{color:var(--text2)}
+.bx.card .pl{font-size:16px;font-weight:700;color:var(--text2);background:var(--lg);padding:2px 7px;border-radius:2px;flex:none;white-space:nowrap}
+.bx.strip{background:var(--navy25);font-size:16px;line-height:1.18;padding:6px 9.6px;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.bx.strip b{color:var(--navy)}
+/* study S2 */
+.bx.quote{color:#fff;font-size:21.33px;font-weight:700;line-height:1.22;padding:10px 14px;display:flex;align-items:center}
+.bx.quote u{text-decoration:none;color:#BFE8F7}
+.bx.chips{padding:0;display:flex;gap:8px;align-items:stretch}
+.chip{flex:1;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;border-radius:2px}
+.bx.chips.big .chip{font-size:21.33px}
+.bx.txt{padding:4px 9.6px}
+.bx.txt p{margin:0;line-height:1.2}
+.bx.txt .l1{font-size:18.67px;font-weight:700;padding-left:18px;text-indent:-18px;margin-top:5px}
+.bx.txt .l1:first-child{margin-top:0}
+.bx.txt .l1::before{content:"■";color:var(--navy);font-size:11px;display:inline-block;width:18px;text-indent:0;vertical-align:3px}
+.bx.txt .l2{font-size:16px;padding-left:28.8px;text-indent:-18px;margin-top:4px}
+.bx.txt .l2::before{content:"–";color:var(--navy);display:inline-block;width:18px;text-indent:0}
+.bars{display:grid;gap:2px;margin:3px 0 0 28px}
+.br{display:grid;grid-template-columns:150px 1fr 44px;align-items:center;gap:8px;font-size:16px;line-height:1.12}
+.bt{height:12px;background:var(--lg);position:relative}
+.bt i{position:absolute;left:0;top:0;bottom:0}
+.bv{font-weight:700;color:var(--navy);text-align:right}
+.bx.key{background:var(--callout);display:flex;align-items:center;gap:14px;font-size:18.67px;font-weight:700;color:var(--navy);padding:0 14px}
+.bx.key b{color:var(--navy)}
+.kl{flex:none;font-size:16px;font-weight:700;color:#fff;background:var(--navy);padding:3px 9px;border-radius:2px}
+/* study S3 table */
+.bx.tk0{background:transparent}
+.bx.th{color:#fff;font-size:18.67px;line-height:1.22;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:4px 12px}
+.bx.th .hs{font-size:16px;opacity:.85;font-weight:400}
+.bx.th.big{font-size:24px}
+.bx.tk{background:var(--navy25);color:var(--navy);font-weight:700;font-size:16px;display:flex;align-items:center}
+.bx.td{background:var(--lg);font-size:16px;line-height:1.2;padding:7px 10px}
+.bx.td b{color:var(--navy)}
+.bx.td .q{display:inline-block;margin-top:3px;font-weight:700;color:var(--navy)}
+.bx.bridge{background:#E6F0F6;border:2px solid var(--navy50);font-size:16px;line-height:1.2;display:flex;align-items:center;padding:6px 12px}
+.bx.bridge b{color:var(--navy)}
+/* brief B1 */
+.hbars{padding:0}
+.hb{position:absolute;left:0;right:0;height:48px;display:grid;grid-template-columns:40px 200px 1fr 120px;align-items:center;gap:10px}
+.hk{height:40px;color:#fff;font-weight:700;font-size:18.67px;display:flex;align-items:center;justify-content:center}
+.hn{font-size:18.67px;font-weight:700;color:var(--text)}
+.ht{position:relative;height:30px;display:flex;align-items:center}
+.ht i{display:block;height:30px}
+.ht b{margin-left:8px;font-size:18.67px;color:var(--text)}
+.hw{font-size:16px;color:var(--red);font-weight:700}
+.bx.rbox{color:#fff;display:flex;flex-direction:column;gap:6px;padding:14px}
+.rl{font-size:16px;font-weight:700;opacity:.85;letter-spacing:.3px}
+.rn{width:40px;height:40px;border-radius:50%;background:#fff;color:var(--navy);font-weight:700;font-size:21.33px;display:flex;align-items:center;justify-content:center;flex:none}
+.rn.sm{width:36px;height:36px;font-size:18.67px}
+.rt{font-size:21.33px;font-weight:700;line-height:1.22}
+.bx.rbridge{background:var(--navy50);color:#fff;display:flex;align-items:center;gap:14px;font-size:18.67px;line-height:1.25;padding:10px 14px}
+.bx.rbridge .rn{color:var(--navy)}
+.bx.rnote{background:var(--lg);font-size:16px;display:flex;align-items:center;color:var(--text2)}
+.bx.rnote b{color:var(--text);margin-right:6px}
+/* brief B2/B3 */
+.bx.bigq{color:#fff;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:20px 24px}
+.ql{font-size:16px;font-weight:700;letter-spacing:.4px;opacity:.85}
+.qq{font-size:29.33px;font-weight:700;line-height:1.28}
+.qq u{text-decoration:none;color:#BFE8F7}
+.bx.synth{background:#E6F0F6;border-left:6px solid var(--navy50);display:flex;align-items:center;gap:16px;font-size:21.33px;color:var(--text);padding:0 18px}
+.bx.synth b{color:var(--navy)}
+.kl2{flex:none;font-size:16px;font-weight:700;color:var(--navy);border:2px solid var(--navy);padding:2px 9px;border-radius:2px}
+.bx.step{background:var(--lg);font-size:18.67px;line-height:1.25;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:8px 12px;border-top:4px solid var(--c)}
+.bx.step b{color:var(--c);font-size:16px}
+.bx.kq{background:#fff;border:1px solid var(--g85);border-left:6px solid;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:8px 16px}
+.qk{font-size:16px;font-weight:700}
+.qv{font-size:21.33px;font-weight:700;color:var(--text);line-height:1.25}
+
+/* log */
+.log{margin-top:30px;background:var(--pgcard);border:1px solid var(--pgline);padding:20px 24px;display:grid;gap:12px}
+.log h2{margin:0;font-size:18px}
+.log table{border-collapse:collapse;width:100%;font-size:13px;min-width:620px}
+.log th,.log td{border:1px solid var(--pgline);padding:7px 9px;text-align:left;vertical-align:top}
+.log th{background:transparent;color:var(--pgmuted);font-weight:700}
+.log .tw{overflow-x:auto}
+.log p{margin:0;font-size:13.5px;color:var(--pgmuted)}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <h1>Track A 킥오프 · 논의항목 1·2·3 장표 (IQVIA 템플릿 HTML 초안)</h1>
+  <p>IQVIA MC 표준 템플릿의 좌표·서식(13.333×7.5in, 제목 20pt Blue, 헤드 메시지 20pt, 본문 최소 12pt, Note/Source 8pt, 맑은 고딕·Arial)을 그대로 옮긴 HTML 초안입니다. 확정되면 같은 구조로 PPT를 생성합니다. 로고와 페이지 번호는 템플릿에서 상속되므로 자리만 표시했습니다.</p>
+  <nav class="tabs" aria-label="버전 선택"><a href="#study" id="t-study">스터디용 상세본 (3장)</a><a href="#brief" id="t-brief">내부 논의용 간략본 (3장)</a></nav>
+</header>
+<section class="ver" id="v-study"><p class="cap">스터디용 상세본: 장마다 근거·이유·반증조건까지 담았습니다. 본문 12pt 기준을 지키는 선에서 최대 밀도입니다.</p><div class="frame"><div class="slide" data-n="1">
+  <div class="ph tag" style="left:848.26px;top:12.48px;width:405.31px;height:42.24px">Track A | Strategy & Launch</div>
+  <div class="ph sub" style="left:34.37px;top:31.58px;width:1219.2px;height:42.24px">1. 핵심 Client Challenge</div>
+  <div class="ph head" style="left:34.37px;top:78.34px;width:1219.2px;height:80.64px">6개 후보를 6개 기준으로 평가해 Round 1·2와 공통 사례로 쓸 3개를 선정하고, Track B와 겹치거나 청중이 좁은 3개는 사례·맥락으로 돌림</div>
+  <div class="bx colhead" style="left:43.97px;top:175.58px;width:715.2px;height:40.32px;border-top-color:#00A3E0"><span>선정 3개 <em>점수 / 30</em></span></div><div class="bx colhead" style="left:783.17px;top:175.58px;width:460.8px;height:40.32px;border-top-color:#A6A6A6"><span>탈락 3개와 이유</span></div><div class="bx lab" style="left:43.97px;top:223.97px;width:59.52px;height:105.6px;background:#005587"><b>R1</b></div><div class="bx card" style="left:103.49px;top:223.97px;width:655.68px;height:105.6px;"><div class="ct"><span class="t">특허절벽·미국 약가 레짐 아래, 한국의 성장 기회는 어디로 이동하는가</span><span class="sc">26</span></div><div class="cw">2025~30년 3,000억 달러 이상이 독점권을 잃어<sup>1</sup> 본사가 런칭 자원과 순서를 다시 짬. MNC 지사(참석 60%)에겐 본사 설득 논리, 국내사에겐 '제네릭 산정률 45% 이후 성장축' 질문. Round 1 질문에 가장 직접적</div></div><div class="bx lab" style="left:43.97px;top:339.17px;width:59.52px;height:105.6px;background:#00A3E0"><b>R2</b></div><div class="bx card" style="left:103.49px;top:339.17px;width:655.68px;height:105.6px;"><div class="ct"><span class="t">AI 에이전트가 바꾸는 Launch Operating Model <i>고정</i></span><span class="sc">26</span></div><div class="cw">미국에서만 연 50~55개 신약 출시 예상<sup>2</sup>. AI 에이전트 사용·평가 47%, 이미 배포 22%<sup>3</sup><sup>4</sup>. '어느 준비 업무부터, 누가, 어떤 통제로'에 집중해 Track C(참여·성과)와 구분</div></div><div class="bx lab" style="left:43.97px;top:454.37px;width:59.52px;height:105.6px;background:#7FAAC3"><b>공통</b></div><div class="bx card" style="left:103.49px;top:454.37px;width:655.68px;height:105.6px;"><div class="ct"><span class="t">'사 온 자산'의 시대: 외부 자산을 성장과 런칭으로</span><span class="sc">25</span></div><div class="cw">빅파마 인라이선스 자산의 40%가 중국산(2025)<sup>5</sup>, 한국 기술수출은 약 145억 달러로 최대. 1·2를 '외부 자산' 렌즈로 보는 공통 사례로 R1 '선택'과 R2 '준비'를 잇고, 사례 확보 가능성이 가장 높음</div></div><div class="bx card rej" style="left:783.17px;top:223.97px;width:460.8px;height:105.6px;"><div class="ct"><span class="t">D. 약가·급여 제도 전환기</span><span class="pl">20 · → 2의 맥락</span></div><div class="cw">절실도는 최고(5점)지만 급여·가격 실행은 Track B Round 2 주제. 'Track 중복 없음' 1점으로 탈락 조건 해당. 100일 등재도 희귀신약 시범사업 한정</div></div><div class="bx card rej" style="left:783.17px;top:339.17px;width:460.8px;height:105.6px;"><div class="ct"><span class="t">E. 비만·대사 경쟁 런칭</span><span class="pl">20 · → 1의 사례</span></div><div class="cw">시의성은 높으나 직접 해당 참석사가 소수(추정)라 '참석자 폭' 2점. 시장·채널·가격을 다루면 Track B·C와 겹쳐 1의 '비급여 성장 기회' 사례로</div></div><div class="bx card rej" style="left:783.17px;top:454.37px;width:460.8px;height:105.6px;"><div class="ct"><span class="t">F. 첫해 처방 65% 미조제</span><span class="pl">18 · → 2에서 일부</span></div><div class="cw">원인이 급여 거절 49%·환자 포기 17%인 접근성 문제<sup>6</sup>로 Track B 영역(중복 1점). Track A는 승인 전 교차기능 핸드오프만</div></div><div class="bx strip" style="left:43.97px;top:571.49px;width:291.36px;height:76.51px;"><b>평가 기준 6개 · 각 5점</b><span>절실도·Round 적합·중복 없음·BU 역량·사례·청중</span></div><div class="bx strip" style="left:346.85px;top:571.49px;width:291.36px;height:76.51px;"><b>탈락 조건</b><span>'중복 없음' 2점 이하면 제외 (D·F)</span></div><div class="bx strip" style="left:649.73px;top:571.49px;width:291.36px;height:76.51px;"><b>재검토 트리거</b><span>11/27까지 Round별 사례사 2곳 미확보 시</span></div><div class="bx strip" style="left:952.61px;top:571.49px;width:291.36px;height:76.51px;"><b>Track 경계</b><span>급여·접근성은 B, HCP 참여·성과는 C</span></div>
+  <div class="ph foot" style="left:34.37px;top:670.66px;width:1056.0px;height:35.52px"><div>Note: 3. 헬스케어·생명과학 응답자 600명 이상<br>Source: 1. Evaluate, $300bn Patent Cliff; 2. IQVIA, U.S. Medicine Use Trends 2026; 4. NVIDIA, State of AI in HC&amp;LS 2026; 5. PharmExec, 2026.6 (IQVIA 집계 인용); 6. IQVIA, 미국 2020~24년 신약 99개; 리서치 본문 v6, IQVIA analysis</div></div>
+  <div class="ph logo" style="left:1089.41px;top:686.21px;width:120.0px;height:22.66px">로고 · 템플릿 상속</div>
+  <div class="ph pno" style="left:1230.82px;top:687.07px;width:37.06px;height:18.62px">1</div>
+</div></div><div class="frame"><div class="slide" data-n="2">
+  <div class="ph tag" style="left:848.26px;top:12.48px;width:405.31px;height:42.24px">Track A | Strategy & Launch</div>
+  <div class="ph sub" style="left:34.37px;top:31.58px;width:1219.2px;height:42.24px">2. Key Takeaway</div>
+  <div class="ph head" style="left:34.37px;top:78.34px;width:1219.2px;height:80.64px">참석 리더가 기억할 문장은 Round별 하나씩으로, Round 1은 '다시 선택해야 한다', Round 2는 '도입률이 아니라 병목'임</div>
+  <div class="bx colhead" style="left:43.97px;top:175.58px;width:580.8px;height:40.32px;border-top-color:#005587"><span>Round 1 · Takeaway ①</span></div><div class="bx colhead" style="left:663.17px;top:175.58px;width:580.8px;height:40.32px;border-top-color:#00A3E0"><span>Round 2 · Takeaway ②</span></div><div class="bx quote" style="left:43.97px;top:223.97px;width:580.8px;height:105.6px;background:#005587"><span>“2027년의 성장 기회는 시장을 찾는 데서 끝나지 않는다. 외부환경 변화에 맞춰 <u>치료영역·자산·출시 순서를 다시 선택</u>해야 한다.”</span></div><div class="bx quote" style="left:663.17px;top:223.97px;width:580.8px;height:105.6px;background:#00A3E0"><span>“AI 에이전트의 가치는 도입률이 아니라 <u>런칭 준비의 병목을 얼마나 줄이는가</u>로 결정된다. 우선 업무와 역할·데이터·통제를 함께 설계해야 한다.”</span></div><div class="bx chips" style="left:43.97px;top:339.17px;width:580.8px;height:34.56px;"><span class="chip" style="background:#BFE8F7;color:#005587">치료영역</span><span class="chip" style="background:#BFE8F7;color:#005587">자산</span><span class="chip" style="background:#BFE8F7;color:#005587">출시 순서</span></div><div class="bx chips" style="left:663.17px;top:339.17px;width:580.8px;height:34.56px;"><span class="chip" style="background:#BFE8F7;color:#005587">우선 업무</span><span class="chip" style="background:#BFE8F7;color:#005587">역할</span><span class="chip" style="background:#BFE8F7;color:#005587">데이터</span><span class="chip" style="background:#BFE8F7;color:#005587">통제</span></div><div class="bx txt" style="left:43.97px;top:381.41px;width:580.8px;height:209.95px;"><p class="l1">왜 이 문장인가</p>
+<p class="l2">특허만료로 본사 자원이 재배분되고, 미국 정책이 출시 순서를 흔들고, 외부 자산이 인라이선스의 40% 이상이 됨</p>
+<p class="l2">세 변화가 각각 자산·출시 순서·치료영역 선택에 닿아 핵심 동사는 '다시 선택'</p>
+<p class="l2">리더급 청중에게 분석 결과가 아니라 해야 할 결정을 남김</p>
+<p class="l1">반증조건</p>
+<p class="l2">사전 설문에서 다수가 '우선 치료영역이 작년과 같다'고 답하면 '선택은 같아도 순서는 바뀐다'로 좁힘</p></div><div class="bx txt" style="left:663.17px;top:381.41px;width:580.8px;height:209.95px;"><p class="l1">왜 이 문장인가</p>
+<p class="l2">AI 에이전트 사용·평가 47%, 이미 배포 22%<sup>1</sup></p>
+<p class="l2">제약 임원이 꼽은 배포 난관 상위는 기술이 아닌 설계·통제<sup>2</sup></p>
+<div class="bars"><div class="br"><span class="bl">워크플로 설계</span><span class="bt"><i style="width:60%;background:#005587"></i></span><span class="bv">60%</span></div><div class="br"><span class="bl">컴플라이언스·검증</span><span class="bt"><i style="width:55%;background:#005587"></i></span><span class="bv">55%</span></div><div class="br"><span class="bl">기술 인프라</span><span class="bt"><i style="width:42%;background:#7FAAC3"></i></span><span class="bv">42%</span></div><div class="br"><span class="bl">데이터 거버넌스</span><span class="bt"><i style="width:38%;background:#7FAAC3"></i></span><span class="bv">38%</span></div></div>
+<p class="l1">반증조건</p>
+<p class="l2">사례사가 '인프라가 최대 병목'이라 하면 문구 수정</p></div><div class="bx key" style="left:43.97px;top:599.04px;width:1200.0px;height:48.96px;"><span class="kl">종합 세션용 ③</span><span>외부환경이 불확실할수록 <b>성장 선택(R1)</b>과 <b>런칭 준비(R2)</b>의 연결이 2027년 한국 제약의 성패를 가른다<sup>3</sup></span></span></div>
+  <div class="ph foot" style="left:34.37px;top:670.66px;width:1056.0px;height:35.52px"><div>Note: 3. 15:35 전체 세션에서 Track Chair가 사용<br>Source: 1. NVIDIA, State of AI in HC&amp;LS 2026; 2. MIT Technology Review Insights·Globant, 9개국 제약 임원 250명, 2025.10; 리서치 본문 v6, IQVIA analysis</div></div>
+  <div class="ph logo" style="left:1089.41px;top:686.21px;width:120.0px;height:22.66px">로고 · 템플릿 상속</div>
+  <div class="ph pno" style="left:1230.82px;top:687.07px;width:37.06px;height:18.62px">2</div>
+</div></div><div class="frame"><div class="slide" data-n="3">
+  <div class="ph tag" style="left:848.26px;top:12.48px;width:405.31px;height:42.24px">Track A | Strategy & Launch</div>
+  <div class="ph sub" style="left:34.37px;top:31.58px;width:1219.2px;height:42.24px">3. Session · Discussion Topic</div>
+  <div class="ph head" style="left:34.37px;top:78.34px;width:1219.2px;height:80.64px">Round 1은 '기회 지도 다시 그리기', Round 2는 '에이전트에게 먼저 맡길 준비 업무'로 짜고, '사 온 자산' 사례로 두 Round를 이음</div>
+  <div class="bx tk0" style="left:43.97px;top:184.03px;width:145.92px;height:59.52px;"></div><div class="bx th" style="left:197.57px;top:184.03px;width:519.36px;height:59.52px;background:#005587"><span class="hs">Session 1 · Round 1 · 13:10–14:00</span><b>2027 한국 성장 기회 지도, 다시 그리기</b></div><div class="bx th" style="left:724.61px;top:184.03px;width:519.36px;height:59.52px;background:#00A3E0"><span class="hs">Session 2 · Round 2 · 14:20–15:10</span><b>런칭 준비 업무 중 에이전트에게 먼저 맡길 것</b></div><div class="bx tk" style="left:43.97px;top:249.31px;width:145.92px;height:63.36px;">Insight 10'</div><div class="bx td" style="left:197.57px;top:249.31px;width:519.36px;height:63.36px;"><b>INFO·PI</b> 플레너리 Outlook 수치를 받아 치료영역·환자군·자산별 '이동' 지도. 첫 장은 참석 리더 사전 설문</div><div class="bx td" style="left:724.61px;top:249.31px;width:519.36px;height:63.36px;"><b>MC·Analytics·Tech</b> R1 요약 2분 → 런칭 부담·에이전트 현황 → 준비도 점검 워크플로 시연 3분<sup>1</sup></div><div class="bx tk" style="left:43.97px;top:318.43px;width:145.92px;height:44.16px;">Joint Case 15'</div><div class="bx td" style="left:197.57px;top:318.43px;width:519.36px;height:44.16px;"><b>MC + MNC 지사 임원</b> 한국 런칭을 본사 우선순위로 올린 사례</div><div class="bx td" style="left:724.61px;top:318.43px;width:519.36px;height:44.16px;"><b>MC + MNC 지사 런칭 리더</b> Launch PMO·예측에 AI를 적용한 사례</div><div class="bx tk" style="left:43.97px;top:368.35px;width:145.92px;height:76.8px;">Discussion 15'</div><div class="bx td" style="left:197.57px;top:368.35px;width:519.36px;height:76.8px;">패널: 국내사 임원, 신사업 대기업 임원, 사례 발표자<br><span class='q'>Q. 2027 기회 지도는 작년과 무엇이 다르고, 무엇을 그만둘 것인가?</span></div><div class="bx td" style="left:724.61px;top:368.35px;width:519.36px;height:76.8px;">패널: 국내사 임원, IQVIA Domain Expert(HTA/HE·CES), 발표자<br><span class='q'>Q. 어떤 준비 업무를 먼저 맡기고, 무엇은 사람이 지킬 것인가?</span></div><div class="bx tk" style="left:43.97px;top:450.91px;width:145.92px;height:76.8px;">왜 이렇게</div><div class="bx td" style="left:197.57px;top:450.91px;width:519.36px;height:76.8px;">Outlook과 겹치지 않게 '전망' 대신 '이동'. 리더에게 가장 어려운 결정인 '그만둘 것'을 질문에. 사례(MNC)와 패널(국내·대기업)로 청중 전원을 커버</div><div class="bx td" style="left:724.61px;top:450.91px;width:519.36px;height:76.8px;">말로는 Track C와 같아 보여 시연으로 '런칭 준비' 자리를 보임. 교차기능 전문가는 '준비 체크포인트'로만 발언해 Track B·C를 넘지 않음</div><div class="bx tk" style="left:43.97px;top:533.47px;width:145.92px;height:38.4px;">넘김</div><div class="bx td" style="left:197.57px;top:533.47px;width:519.36px;height:38.4px;">→ R2: 기회를 골랐다면, 런칭은 누가 어떻게 준비하는가</div><div class="bx td" style="left:724.61px;top:533.47px;width:519.36px;height:38.4px;">→ Track B(급여) · Track C(HCP 참여 AI) · 종합 세션 ③</div><div class="bx tk" style="left:43.97px;top:577.63px;width:145.92px;height:70.37px;background:#7FAAC3;color:#fff">공통 사례</div><div class="bx bridge" style="left:197.57px;top:577.63px;width:1046.4px;height:70.37px;"><span><b>사 온 자산의 런칭</b> · R1 “자체 개발과 사 온 자산을 같은 잣대로 고르는가?” → R2 “데이터 공백과 파트너 역할은 누가 메우는가?” 같은 회사가 두 Round에 서면 가장 강함</span></div>
+  <div class="ph foot" style="left:34.37px;top:670.66px;width:1056.0px;height:35.52px"><div>Note: 1. 시연 가능 여부 Tech 확인 필요<br>Source: 기획서 초안 4·6장, 리서치 본문 v6</div></div>
+  <div class="ph logo" style="left:1089.41px;top:686.21px;width:120.0px;height:22.66px">로고 · 템플릿 상속</div>
+  <div class="ph pno" style="left:1230.82px;top:687.07px;width:37.06px;height:18.62px">3</div>
+</div></div></section>
+<section class="ver" id="v-brief" hidden><p class="cap">내부 논의용 간략본: 도식 중심, 문장 최소화, 장마다 결정 요청 한 줄.</p><div class="frame"><div class="slide" data-n="1">
+  <div class="ph tag" style="left:848.26px;top:12.48px;width:405.31px;height:42.24px">Track A | Strategy & Launch</div>
+  <div class="ph sub" style="left:34.37px;top:31.58px;width:1219.2px;height:42.24px">1. 핵심 Client Challenge</div>
+  <div class="ph head" style="left:34.37px;top:78.34px;width:1219.2px;height:80.64px">Round 1은 '성장 기회 이동', Round 2는 'AI 에이전트 런칭 운영모델', 두 Round를 잇는 공통 사례는 '사 온 자산'으로 제안함</div>
+  <div class="bx colhead" style="left:43.97px;top:175.58px;width:628.8px;height:40.32px;border-top-color:#00A3E0"><span>후보 6개 평가 <em>점수 / 30</em></span></div><div class="bx colhead" style="left:706.37px;top:175.58px;width:537.6px;height:40.32px;border-top-color:#00A3E0"><span>Round 배치</span></div><div class="bx hbars" style="left:43.97px;top:225.89px;width:628.8px;height:345.6px;"><div class="hb" style="top:0.0px"><span class="hk" style="background:#005587">1</span><span class="hn">성장 기회 이동</span><span class="ht"><i style="width:86.7%;background:#005587"></i><b>26</b></span><span class="hw"></span></div><div class="hb" style="top:59.52px"><span class="hk" style="background:#005587">2</span><span class="hn">AI 에이전트 운영모델</span><span class="ht"><i style="width:86.7%;background:#005587"></i><b>26</b></span><span class="hw"></span></div><div class="hb" style="top:119.04px"><span class="hk" style="background:#005587">3</span><span class="hn">사 온 자산</span><span class="ht"><i style="width:83.3%;background:#005587"></i><b>25</b></span><span class="hw"></span></div><div class="hb" style="top:178.56px"><span class="hk" style="background:#BFBFBF">D</span><span class="hn">약가·급여 제도</span><span class="ht"><i style="width:66.7%;background:#BFBFBF"></i><b>20</b></span><span class="hw">Track B 중복</span></div><div class="hb" style="top:238.08px"><span class="hk" style="background:#BFBFBF">E</span><span class="hn">비만 경쟁 런칭</span><span class="ht"><i style="width:66.7%;background:#BFBFBF"></i><b>20</b></span><span class="hw">청중 좁음</span></div><div class="hb" style="top:297.6px"><span class="hk" style="background:#BFBFBF">F</span><span class="hn">첫해 미조제</span><span class="ht"><i style="width:60.0%;background:#BFBFBF"></i><b>18</b></span><span class="hw">Track B 중복</span></div></div><div class="bx rbox" style="left:706.37px;top:225.89px;width:259.2px;height:192.0px;background:#005587"><span class="rl">ROUND 1 · 13:10</span><span class="rn">1</span><span class="rt">한국의 성장 기회는 어디로 이동하는가</span></div><div class="bx rbox" style="left:984.77px;top:225.89px;width:259.2px;height:192.0px;background:#00A3E0"><span class="rl">ROUND 2 · 14:20</span><span class="rn">2</span><span class="rt">AI 에이전트가 바꾸는 Launch Operating Model</span></div><div class="bx rbridge" style="left:706.37px;top:429.41px;width:537.6px;height:82.56px;"><span class="rn sm">3</span><span><b>공통 사례 · 사 온 자산</b><br>선택(R1) → 준비(R2)</span></div><div class="bx rnote" style="left:706.37px;top:523.49px;width:537.6px;height:59.52px;"><b>D·E·F</b>는 독립 아젠다에서 빼고 2의 맥락, 1의 사례로 사용</div><div class="bx key" style="left:43.97px;top:597.12px;width:1200.0px;height:50.88px;"><span class="kl">결정 요청</span><span>선정 3개 확정 · 11/27까지 Round별 사례 고객사 2곳 미확보 시 재검토</span></div>
+  <div class="ph foot" style="left:34.37px;top:670.66px;width:1056.0px;height:35.52px"><div>Source: IQVIA analysis</div></div>
+  <div class="ph logo" style="left:1089.41px;top:686.21px;width:120.0px;height:22.66px">로고 · 템플릿 상속</div>
+  <div class="ph pno" style="left:1230.82px;top:687.07px;width:37.06px;height:18.62px">1</div>
+</div></div><div class="frame"><div class="slide" data-n="2">
+  <div class="ph tag" style="left:848.26px;top:12.48px;width:405.31px;height:42.24px">Track A | Strategy & Launch</div>
+  <div class="ph sub" style="left:34.37px;top:31.58px;width:1219.2px;height:42.24px">2. Key Takeaway</div>
+  <div class="ph head" style="left:34.37px;top:78.34px;width:1219.2px;height:80.64px">Round별로 하나의 문장을 남김: Round 1은 '다시 선택해야 한다', Round 2는 '도입률이 아니라 병목'</div>
+  <div class="bx bigq" style="left:43.97px;top:184.03px;width:580.8px;height:240.0px;background:#005587"><span class="ql">ROUND 1 · TAKEAWAY ①</span><span class="qq">시장을 찾는 데서 끝나지 않는다.<br><u>치료영역·자산·출시 순서</u>를 다시 선택해야 한다.</span></div><div class="bx chips big" style="left:43.97px;top:435.55px;width:580.8px;height:48.0px;"><span class="chip" style="background:#BFE8F7;color:#005587">치료영역</span><span class="chip" style="background:#BFE8F7;color:#005587">자산</span><span class="chip" style="background:#BFE8F7;color:#005587">출시 순서</span></div><div class="bx bigq" style="left:663.17px;top:184.03px;width:580.8px;height:240.0px;background:#00A3E0"><span class="ql">ROUND 2 · TAKEAWAY ②</span><span class="qq">가치는 도입률이 아니라<br><u>런칭 준비의 병목</u>을 얼마나 줄이는가로 결정된다.</span></div><div class="bx chips big" style="left:663.17px;top:435.55px;width:580.8px;height:48.0px;"><span class="chip" style="background:#BFE8F7;color:#005587">우선 업무</span><span class="chip" style="background:#BFE8F7;color:#005587">역할</span><span class="chip" style="background:#BFE8F7;color:#005587">데이터</span><span class="chip" style="background:#BFE8F7;color:#005587">통제</span></div><div class="bx synth" style="left:43.97px;top:500.83px;width:1200.0px;height:78.72px;"><span class="kl2">종합 ③</span><span>외부환경이 불확실할수록 <b>성장 선택</b>과 <b>런칭 준비</b>의 연결이 2027년 한국 제약의 성패를 가른다</span></div><div class="bx key" style="left:43.97px;top:597.12px;width:1200.0px;height:50.88px;"><span class="kl">결정 요청</span><span>①·②를 Session Brief(Gate 1, 11/20) Takeaway로 확정 · ③을 종합 세션 메시지로 확정</span></div>
+  <div class="ph foot" style="left:34.37px;top:670.66px;width:1056.0px;height:35.52px"><div>Source: IQVIA analysis</div></div>
+  <div class="ph logo" style="left:1089.41px;top:686.21px;width:120.0px;height:22.66px">로고 · 템플릿 상속</div>
+  <div class="ph pno" style="left:1230.82px;top:687.07px;width:37.06px;height:18.62px">2</div>
+</div></div><div class="frame"><div class="slide" data-n="3">
+  <div class="ph tag" style="left:848.26px;top:12.48px;width:405.31px;height:42.24px">Track A | Strategy & Launch</div>
+  <div class="ph sub" style="left:34.37px;top:31.58px;width:1219.2px;height:42.24px">3. Session · Discussion Topic</div>
+  <div class="ph head" style="left:34.37px;top:78.34px;width:1219.2px;height:80.64px">두 세션은 '기회 지도 다시 그리기'와 '에이전트에게 먼저 맡길 업무'로 짜고, 사례 하나가 두 Round를 이음</div>
+  <div class="bx th big" style="left:43.97px;top:184.03px;width:580.8px;height:86.4px;background:#005587"><span class="hs">ROUND 1 · 13:10</span><b>2027 한국 성장 기회 지도, 다시 그리기</b></div><div class="bx step" style="left:43.97px;top:281.95px;width:187.2px;height:107.52px;--c:#005587"><b>Insight</b><span>기회 '이동' 지도</span></div><div class="bx step" style="left:240.77px;top:281.95px;width:187.2px;height:107.52px;--c:#005587"><b>Joint Case</b><span>MNC 지사 임원</span></div><div class="bx step last" style="left:437.57px;top:281.95px;width:187.2px;height:107.52px;--c:#005587"><b>Discussion</b><span>국내사·대기업 리더</span></div><div class="bx kq" style="left:43.97px;top:400.99px;width:580.8px;height:96.0px;border-left-color:#005587"><span class="qk" style="color:#005587">핵심 질문</span><span class="qv">“무엇이 달라졌고, 무엇을 그만둘 것인가?”</span></div><div class="bx th big" style="left:663.17px;top:184.03px;width:580.8px;height:86.4px;background:#00A3E0"><span class="hs">ROUND 2 · 14:20</span><b>런칭 준비 업무 중 에이전트에게 먼저 맡길 것</b></div><div class="bx step" style="left:663.17px;top:281.95px;width:187.2px;height:107.52px;--c:#00A3E0"><b>Insight</b><span>현황 + 시연 3분</span></div><div class="bx step" style="left:859.97px;top:281.95px;width:187.2px;height:107.52px;--c:#00A3E0"><b>Joint Case</b><span>MNC 런칭 리더</span></div><div class="bx step last" style="left:1056.77px;top:281.95px;width:187.2px;height:107.52px;--c:#00A3E0"><b>Discussion</b><span>국내사·IQVIA 전문가</span></div><div class="bx kq" style="left:663.17px;top:400.99px;width:580.8px;height:96.0px;border-left-color:#00A3E0"><span class="qk" style="color:#00A3E0">핵심 질문</span><span class="qv">“무엇을 먼저 맡기고, 무엇은 사람이 지킬 것인가?”</span></div><div class="bx synth" style="left:43.97px;top:510.43px;width:1200.0px;height:74.88px;"><span class="kl2">공통 사례</span><span><b>사 온 자산</b> · R1 “같은 잣대로 고르는가?” → R2 “데이터 공백과 파트너 역할은 누가 메우는가?”</span></div><div class="bx key" style="left:43.97px;top:597.12px;width:1200.0px;height:50.88px;"><span class="kl">결정 요청</span><span>세션 제목·핵심 질문 확정 · 시연 3분 포함(Tech 확인) · 공통 사례를 같은 회사로 섭외할지</span></div>
+  <div class="ph foot" style="left:34.37px;top:670.66px;width:1056.0px;height:35.52px"><div>Source: 기획서 초안 4·6장, IQVIA analysis</div></div>
+  <div class="ph logo" style="left:1089.41px;top:686.21px;width:120.0px;height:22.66px">로고 · 템플릿 상속</div>
+  <div class="ph pno" style="left:1230.82px;top:687.07px;width:37.06px;height:18.62px">3</div>
+</div></div></section>
+<section class="log" id="log">
+  <h2>디자인 고도화 로그 (v1, 3라운드)</h2>
+  <p>매 라운드 실제 크기(1280×720px = 13.333×7.5in)로 렌더해 맑은 고딕 기준으로 넘침·12pt 미만 글자·헤드 메시지 줄 수·그리드 이탈을 자동 점검하고, 캡처 이미지를 직접 보고 고쳤습니다.</p>
+  <div class="tw"><table>
+    <thead><tr><th>라운드</th><th>관점</th><th>점검 결과</th><th>조치</th></tr></thead>
+    <tbody>
+      <tr><td>R1</td><td>구조·사실 (Blue/Red)</td><td>자동 점검 17건: 상자 넘침 13건, 12pt 미만 라벨 4건. 눈으로 본 문제: 인용 상자의 강조어가 별도 칸으로 쪼개짐, 세션 헤더 잘림, 하단 기준 띠 잘림</td><td>장별 시각 앵커 확정(상세본: 카드·막대·표, 간략본: 순위 막대·Round 배치도·흐름 단계)</td></tr>
+      <tr><td>R2</td><td>논리·가독 (Green)</td><td>3건으로 감소 (Takeaway 장에 집중)</td><td>강조어 줄바꿈 수정, 헤더 줄 구조 수정, 라벨 12pt로 상향, 기준 띠 문구 압축, 표 첫 열 확대</td></tr>
+      <tr><td>R3</td><td>디자인 (Black)</td><td>0건</td><td>한국어 단어 단위 줄바꿈 적용('청/중' 같은 어절 분리 제거), 인용 상자·막대 행 높이 재조정, 반증조건 문구 축약</td></tr>
+    </tbody>
+  </table></div>
+  <p>템플릿 준수: 제목·헤드 메시지·섹션 태그·Note/Source 위치와 크기는 템플릿 placeholder 좌표 그대로, 콘텐츠는 좌 0.458" · 우 12.958" · 하 6.750" 안, 각주 번호는 본문 공간 순서대로 Note·Source가 한 번호 열을 공유. 표지·Thank You는 요청에 따라 제외. 로고는 PPT에서 템플릿이 상속하므로 HTML에는 자리만 표시했습니다.</p>
+</section>
+
+</div>
+<script>
+(function(){
+  function fit(){document.querySelectorAll('.frame').forEach(function(f){f.style.setProperty('--k',(f.clientWidth/1280).toFixed(4));});}
+  function route(){
+    var v=(location.hash==='#brief')?'brief':'study';
+    document.getElementById('v-study').hidden=(v!=='study');
+    document.getElementById('v-brief').hidden=(v!=='brief');
+    document.getElementById('t-study').setAttribute('aria-current',v==='study');
+    document.getElementById('t-brief').setAttribute('aria-current',v==='brief');
+    fit();
+  }
+  window.addEventListener('hashchange',route);
+  window.addEventListener('resize',fit);
+  if(window.ResizeObserver){new ResizeObserver(fit).observe(document.body);}
+  route();
+})();
+</script>

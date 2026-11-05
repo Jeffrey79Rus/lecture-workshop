@@ -1,0 +1,159 @@
+<title>Track A 킥오프 IQVIA 장표</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: 페이지 = 버전 탭(상세본/간략본) + 13.333x7.5in 슬라이드 캔버스(1280x720px)를 화면 폭에 맞춰 축소.
+   슬라이드 캔버스는 PPT 그대로 흰 바탕 단일 룩. 페이지 바탕·탭만 테마를 따름. 색은 IQVIA 템플릿 테마 토큰. */
+:root{
+  --pg:#E9ECF0; --pgfg:#2B3A42; --pgmuted:#606B71; --pgline:#D0D5DC; --pgcard:#FFFFFF;
+  --text:#2B3A42; --text2:#606B71; --blue:#00A3E0; --navy:#005587; --navy50:#7FAAC3; --navy25:#BFD4E1;
+  --blue25:#BFE8F7; --callout:#C6EFFF; --lg:#F3F3F3; --g85:#D9D9D9; --g75:#BFBFBF; --g65:#A6A6A6; --red:#C00000;
+  --kr:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  --font:Arial,var(--kr);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --pg:#14181E; --pgfg:#E7EAF0; --pgmuted:#A3ACBA; --pgline:#2E3645; --pgcard:#1C222C; color-scheme:dark } }
+:root[data-theme="dark"]{ --pg:#14181E; --pgfg:#E7EAF0; --pgmuted:#A3ACBA; --pgline:#2E3645; --pgcard:#1C222C; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--pg);color:var(--pgfg);font-family:var(--font);font-size:14px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1280px;margin:0 auto}
+header.top{padding-block:32px 14px;display:grid;gap:8px}
+header h1{margin:0;font-size:clamp(20px,3vw,26px);font-weight:700}
+header p{margin:0;color:var(--pgmuted);font-size:13.5px;max-width:80ch}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.tabs a{font-size:14px;font-weight:700;text-decoration:none;padding:8px 16px;border:1px solid var(--pgline);border-radius:3px;color:var(--pgfg);background:var(--pgcard)}
+.tabs a[aria-current="true"]{background:#005587;border-color:#005587;color:#fff}
+.tabs a:focus-visible{outline:2px solid #00A3E0;outline-offset:2px}
+.ver{display:grid;gap:22px;margin-top:18px}
+.ver > .cap{font-size:13px;color:var(--pgmuted)}
+.frame{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.18);background:#fff}
+.frame .slide{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0;transform:scale(var(--k,1))}
+.noscript-note{font-size:12px;color:var(--pgmuted)}
+
+/* ---------- slide canvas (PPT 서식 그대로) ---------- */
+.slide{background:#fff;color:var(--text);font-family:var(--font);overflow:hidden;word-break:keep-all;overflow-wrap:anywhere}
+.slide sup{font-size:.62em;line-height:0;vertical-align:.55em;color:var(--navy);font-weight:700;margin-left:1px}
+.ph,.bx{position:absolute;overflow:hidden}
+.ph.tag{font-size:21.33px;font-weight:700;color:var(--blue);text-align:right;padding:0 9.6px;display:flex;align-items:center;justify-content:flex-end}
+.ph.sub{font-size:26.67px;font-weight:700;color:var(--blue);padding:0 9.6px;display:flex;align-items:center}
+.ph.head{font-size:26.67px;font-weight:700;color:var(--text);line-height:.98;padding:4.8px 9.6px;letter-spacing:-.2px}
+.ph.foot{font-size:10.67px;color:var(--text);padding:0 9.6px;display:flex;align-items:flex-end;line-height:1.2}
+.ph.logo{font-size:9px;color:#9AA4AA;border:1px dashed #C9D0D5;display:flex;align-items:center;justify-content:center;letter-spacing:.2px}
+.ph.pno{font-size:10.67px;color:#959CA0;text-align:right}
+
+.bx{font-size:16px;line-height:1.2;padding:9.6px}
+.bx.colhead{border-top:4px solid var(--blue);padding:5px 9.6px 0;font-size:21.33px;font-weight:700;color:var(--text)}
+.bx.colhead em{font-style:normal;font-weight:400;font-size:16px;color:var(--text2);margin-left:8px}
+/* study S1 */
+.bx.lab{color:#fff;display:flex;align-items:center;justify-content:center;font-size:18.67px;padding:0}
+.bx.card{background:var(--lg);display:flex;flex-direction:column;gap:5px}
+.bx.card .ct{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.bx.card .t{font-size:18.67px;font-weight:700;color:var(--navy);line-height:1.15}
+.bx.card .t i{font-style:normal;font-size:16px;font-weight:700;color:#fff;background:var(--blue);padding:1px 6px;border-radius:2px;vertical-align:3px;margin-left:4px}
+.bx.card .sc{font-size:21.33px;font-weight:700;color:var(--navy);flex:none}
+.bx.card .cw{font-size:16px;line-height:1.2}
+.bx.card.rej{background:#fff;border:1px solid var(--g85);border-left:6px solid var(--g65)}
+.bx.card.rej .t{color:var(--text2)}
+.bx.card .pl{font-size:16px;font-weight:700;color:var(--text2);background:var(--lg);padding:2px 7px;border-radius:2px;flex:none;white-space:nowrap}
+.bx.strip{background:var(--navy25);font-size:16px;line-height:1.18;padding:6px 9.6px;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.bx.strip b{color:var(--navy)}
+/* study S2 */
+.bx.quote{color:#fff;font-size:21.33px;font-weight:700;line-height:1.22;padding:10px 14px;display:flex;align-items:center}
+.bx.quote u{text-decoration:none;color:#BFE8F7}
+.bx.chips{padding:0;display:flex;gap:8px;align-items:stretch}
+.chip{flex:1;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;border-radius:2px}
+.bx.chips.big .chip{font-size:21.33px}
+.bx.txt{padding:4px 9.6px}
+.bx.txt p{margin:0;line-height:1.2}
+.bx.txt .l1{font-size:18.67px;font-weight:700;padding-left:18px;text-indent:-18px;margin-top:5px}
+.bx.txt .l1:first-child{margin-top:0}
+.bx.txt .l1::before{content:"■";color:var(--navy);font-size:11px;display:inline-block;width:18px;text-indent:0;vertical-align:3px}
+.bx.txt .l2{font-size:16px;padding-left:28.8px;text-indent:-18px;margin-top:4px}
+.bx.txt .l2::before{content:"–";color:var(--navy);display:inline-block;width:18px;text-indent:0}
+.bars{display:grid;gap:2px;margin:3px 0 0 28px}
+.br{display:grid;grid-template-columns:150px 1fr 44px;align-items:center;gap:8px;font-size:16px;line-height:1.12}
+.bt{height:12px;background:var(--lg);position:relative}
+.bt i{position:absolute;left:0;top:0;bottom:0}
+.bv{font-weight:700;color:var(--navy);text-align:right}
+.bx.key{background:var(--callout);display:flex;align-items:center;gap:14px;font-size:18.67px;font-weight:700;color:var(--navy);padding:0 14px}
+.bx.key b{color:var(--navy)}
+.kl{flex:none;font-size:16px;font-weight:700;color:#fff;background:var(--navy);padding:3px 9px;border-radius:2px}
+/* study S3 table */
+.bx.tk0{background:transparent}
+.bx.th{color:#fff;font-size:18.67px;line-height:1.22;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:4px 12px}
+.bx.th .hs{font-size:16px;opacity:.85;font-weight:400}
+.bx.th.big{font-size:24px}
+.bx.tk{background:var(--navy25);color:var(--navy);font-weight:700;font-size:16px;display:flex;align-items:center}
+.bx.td{background:var(--lg);font-size:16px;line-height:1.2;padding:7px 10px}
+.bx.td b{color:var(--navy)}
+.bx.td .q{display:inline-block;margin-top:3px;font-weight:700;color:var(--navy)}
+.bx.bridge{background:#E6F0F6;border:2px solid var(--navy50);font-size:16px;line-height:1.2;display:flex;align-items:center;padding:6px 12px}
+.bx.bridge b{color:var(--navy)}
+/* brief B1 */
+.hbars{padding:0}
+.hb{position:absolute;left:0;right:0;height:48px;display:grid;grid-template-columns:40px 200px 1fr 120px;align-items:center;gap:10px}
+.hk{height:40px;color:#fff;font-weight:700;font-size:18.67px;display:flex;align-items:center;justify-content:center}
+.hn{font-size:18.67px;font-weight:700;color:var(--text)}
+.ht{position:relative;height:30px;display:flex;align-items:center}
+.ht i{display:block;height:30px}
+.ht b{margin-left:8px;font-size:18.67px;color:var(--text)}
+.hw{font-size:16px;color:var(--red);font-weight:700}
+.bx.rbox{color:#fff;display:flex;flex-direction:column;gap:6px;padding:14px}
+.rl{font-size:16px;font-weight:700;opacity:.85;letter-spacing:.3px}
+.rn{width:40px;height:40px;border-radius:50%;background:#fff;color:var(--navy);font-weight:700;font-size:21.33px;display:flex;align-items:center;justify-content:center;flex:none}
+.rn.sm{width:36px;height:36px;font-size:18.67px}
+.rt{font-size:21.33px;font-weight:700;line-height:1.22}
+.bx.rbridge{background:var(--navy50);color:#fff;display:flex;align-items:center;gap:14px;font-size:18.67px;line-height:1.25;padding:10px 14px}
+.bx.rbridge .rn{color:var(--navy)}
+.bx.rnote{background:var(--lg);font-size:16px;display:flex;align-items:center;color:var(--text2)}
+.bx.rnote b{color:var(--text);margin-right:6px}
+/* brief B2/B3 */
+.bx.bigq{color:#fff;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:20px 24px}
+.ql{font-size:16px;font-weight:700;letter-spacing:.4px;opacity:.85}
+.qq{font-size:29.33px;font-weight:700;line-height:1.28}
+.qq u{text-decoration:none;color:#BFE8F7}
+.bx.synth{background:#E6F0F6;border-left:6px solid var(--navy50);display:flex;align-items:center;gap:16px;font-size:21.33px;color:var(--text);padding:0 18px}
+.bx.synth b{color:var(--navy)}
+.kl2{flex:none;font-size:16px;font-weight:700;color:var(--navy);border:2px solid var(--navy);padding:2px 9px;border-radius:2px}
+.bx.step{background:var(--lg);font-size:18.67px;line-height:1.25;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:8px 12px;border-top:4px solid var(--c)}
+.bx.step b{color:var(--c);font-size:16px}
+.bx.kq{background:#fff;border:1px solid var(--g85);border-left:6px solid;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:8px 16px}
+.qk{font-size:16px;font-weight:700}
+.qv{font-size:21.33px;font-weight:700;color:var(--text);line-height:1.25}
+
+/* log */
+.log{margin-top:30px;background:var(--pgcard);border:1px solid var(--pgline);padding:20px 24px;display:grid;gap:12px}
+.log h2{margin:0;font-size:18px}
+.log table{border-collapse:collapse;width:100%;font-size:13px;min-width:620px}
+.log th,.log td{border:1px solid var(--pgline);padding:7px 9px;text-align:left;vertical-align:top}
+.log th{background:transparent;color:var(--pgmuted);font-weight:700}
+.log .tw{overflow-x:auto}
+.log p{margin:0;font-size:13.5px;color:var(--pgmuted)}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <h1>Track A 킥오프 · 논의항목 1·2·3 장표 (IQVIA 템플릿 HTML 초안)</h1>
+  <p>IQVIA MC 표준 템플릿의 좌표·서식(13.333×7.5in, 제목 20pt Blue, 헤드 메시지 20pt, 본문 최소 12pt, Note/Source 8pt, 맑은 고딕·Arial)을 그대로 옮긴 HTML 초안입니다. 확정되면 같은 구조로 PPT를 생성합니다. 로고와 페이지 번호는 템플릿에서 상속되므로 자리만 표시했습니다.</p>
+  <nav class="tabs" aria-label="버전 선택"><a href="#study" id="t-study">스터디용 상세본 (3장)</a><a href="#brief" id="t-brief">내부 논의용 간략본 (3장)</a></nav>
+</header>
+<section class="ver" id="v-study"><p class="cap">스터디용 상세본: 장마다 근거·이유·반증조건까지 담았습니다. 본문 12pt 기준을 지키는 선에서 최대 밀도입니다.</p>{{STUDY}}</section>
+<section class="ver" id="v-brief" hidden><p class="cap">내부 논의용 간략본: 도식 중심, 문장 최소화, 장마다 결정 요청 한 줄.</p>{{BRIEF}}</section>
+{{LOG}}
+</div>
+<script>
+(function(){
+  function fit(){document.querySelectorAll('.frame').forEach(function(f){f.style.setProperty('--k',(f.clientWidth/1280).toFixed(4));});}
+  function route(){
+    var v=(location.hash==='#brief')?'brief':'study';
+    document.getElementById('v-study').hidden=(v!=='study');
+    document.getElementById('v-brief').hidden=(v!=='brief');
+    document.getElementById('t-study').setAttribute('aria-current',v==='study');
+    document.getElementById('t-brief').setAttribute('aria-current',v==='brief');
+    fit();
+  }
+  window.addEventListener('hashchange',route);
+  window.addEventListener('resize',fit);
+  if(window.ResizeObserver){new ResizeObserver(fit).observe(document.body);}
+  route();
+})();
+</script>
