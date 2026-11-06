@@ -120,6 +120,36 @@ header p{margin:0;color:var(--pgmuted);font-size:13.5px;max-width:80ch}
 .qk{font-size:16px;font-weight:700}
 .qv{font-size:21.33px;font-weight:700;color:var(--text);line-height:1.25}
 
+
+/* ---------- 내부 논의용 v2 ---------- */
+.bx.cc{padding:0;display:flex;flex-direction:column;background:#F3F3F3}
+.cc-h{display:grid;grid-template-columns:30px 1fr;grid-template-rows:auto auto;align-content:center;column-gap:10px;row-gap:1px;align-items:center;color:#fff;padding:6px 12px 6px 10px;height:74px;flex:none}
+.cc-h .rk{grid-row:1/3;width:30px;height:30px;border-radius:50%;background:#fff;color:var(--navy);font-weight:700;font-size:18.67px;display:flex;align-items:center;justify-content:center}
+.cc-h .tt{font-size:18.67px;font-weight:700;line-height:1.18}
+.cc-h .tg{font-size:16px;opacity:.9}
+.cc-b{padding:8px 12px;display:flex;flex-direction:column;gap:7px;flex:1}
+.cc-b p{margin:0;font-size:16px;line-height:1.22}
+.cc-b .lb,.sy-b .lb{display:inline-block;font-size:16px;font-weight:700;color:var(--navy);margin-right:6px}
+.bx.cc.off{background:#F7F7F7}
+.bx.cc.off .cc-h .rk{color:#808080}
+.bx.cc.off .cc-b p,.bx.cc.off .cc-b .lb{color:#808080}
+.bx.rs{background:#E6F0F6;border-left:6px solid var(--navy);display:flex;align-items:center;gap:10px;font-size:16px;line-height:1.2;padding:4px 10px}
+.bx.rs .rl{flex:none;font-weight:700;color:var(--navy)}
+.bx.rs.off{background:#F2F2F2;border-left-color:#BFBFBF;color:#808080}
+.bx.rs.off .rl{color:#808080}
+.bx.rowlab{padding:0;display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700;color:#808080}
+.bx.rowlab::after{content:"";flex:1;height:1px;background:#BFBFBF}
+.bx.txt.hyp{background:#F3F3F3;padding:8px 12px}
+.bx.synth2{background:var(--callout);display:flex;flex-direction:column;gap:12px;padding:14px 18px}
+.sy-h{display:flex;align-items:center;gap:14px}
+.sy-q{font-size:24px;font-weight:700;color:var(--navy);line-height:1.25}
+.sy-q b{color:var(--navy);text-decoration:underline;text-decoration-color:#00A3E0;text-decoration-thickness:3px;text-underline-offset:4px}
+.sy-b{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1}
+.sy-b > div{background:#fff;font-size:18.67px;line-height:1.28;padding:10px 16px;display:flex;align-items:center}
+.sy-b .lb{flex:none;font-size:18.67px}
+.bx.th.big2{font-size:24px}
+.bx.td.kq2{font-size:18.67px;font-weight:700;color:var(--navy);display:flex;align-items:center;background:#E6F0F6}
+
 /* log */
 .log{margin-top:30px;background:var(--pgcard);border:1px solid var(--pgline);padding:20px 24px;display:grid;gap:12px}
 .log h2{margin:0;font-size:18px}
@@ -134,21 +164,24 @@ header p{margin:0;color:var(--pgmuted);font-size:13.5px;max-width:80ch}
 <header class="top">
   <h1>Track A 킥오프 · 논의항목 1·2·3 장표 (IQVIA 템플릿 HTML 초안)</h1>
   <p>IQVIA MC 표준 템플릿의 좌표·서식(13.333×7.5in, 제목 20pt Blue, 헤드 메시지 20pt, 본문 최소 12pt, Note/Source 8pt, 맑은 고딕·Arial)을 그대로 옮긴 HTML 초안입니다. 확정되면 같은 구조로 PPT를 생성합니다. 로고와 페이지 번호는 템플릿에서 상속되므로 자리만 표시했습니다.</p>
-  <nav class="tabs" aria-label="버전 선택"><a href="#study" id="t-study">스터디용 상세본 (3장)</a><a href="#brief" id="t-brief">내부 논의용 간략본 (3장)</a></nav>
+  <nav class="tabs" aria-label="버전 선택"><a href="#study" id="t-study">스터디용 상세본 (3장)</a><a href="#brief" id="t-brief">내부 논의용 간략본 (3장)</a><a href="#brief2" id="t-brief2">내부 논의용 v2 (3장)</a></nav>
 </header>
 <section class="ver" id="v-study"><p class="cap">스터디용 상세본: 장마다 근거·이유·반증조건까지 담았습니다. 본문 12pt 기준을 지키는 선에서 최대 밀도입니다.</p>{{STUDY}}</section>
 <section class="ver" id="v-brief" hidden><p class="cap">내부 논의용 간략본: 도식 중심, 문장 최소화, 장마다 결정 요청 한 줄.</p>{{BRIEF}}</section>
+<section class="ver" id="v-brief2" hidden><p class="cap">내부 논의용 v2: 스터디용 상세본을 바탕으로 헤드 메시지를 빼고 콘텐츠 영역을 위로 넓혔습니다. Challenge 6개를 같은 크기로 우선순위대로 놓고, 제외 3개는 회색으로 처리했습니다.</p>{{BRIEF2}}</section>
 {{LOG}}
 </div>
 <script>
 (function(){
   function fit(){document.querySelectorAll('.frame').forEach(function(f){f.style.setProperty('--k',(f.clientWidth/1280).toFixed(4));});}
   function route(){
-    var v=(location.hash==='#brief')?'brief':'study';
+    var h=location.hash.slice(1); var v=(h==='brief'||h==='brief2')?h:'study';
     document.getElementById('v-study').hidden=(v!=='study');
     document.getElementById('v-brief').hidden=(v!=='brief');
+    document.getElementById('v-brief2').hidden=(v!=='brief2');
     document.getElementById('t-study').setAttribute('aria-current',v==='study');
     document.getElementById('t-brief').setAttribute('aria-current',v==='brief');
+    document.getElementById('t-brief2').setAttribute('aria-current',v==='brief2');
     fit();
   }
   window.addEventListener('hashchange',route);

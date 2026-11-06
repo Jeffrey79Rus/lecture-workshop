@@ -5,5 +5,5 @@ shell = open(D + '/shell.html', encoding='utf-8').read()
 wrap = lambda arr: ''.join(f'<div class="frame">{s}</div>' for s in arr)
 logh = open(log, encoding='utf-8').read() if log else ''
 open(out, 'w', encoding='utf-8').write(
-    shell.replace('{{STUDY}}', wrap(data['study'])).replace('{{BRIEF}}', wrap(data['brief'])).replace('{{LOG}}', logh))
+    shell.replace('{{STUDY}}', wrap(data['study'])).replace('{{BRIEF}}', wrap(data['brief'])).replace('{{BRIEF2}}', wrap(data.get('brief2', []))).replace('{{LOG}}', logh))
 print('built', out)

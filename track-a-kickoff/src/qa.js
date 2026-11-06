@@ -8,7 +8,7 @@ const fs = require('fs');
   await pg.goto('file://' + file);
   await pg.waitForTimeout(300);
   const issues = [];
-  for (const v of ['study', 'brief']) {
+  for (const v of ['study', 'brief', 'brief2']) {
     await pg.evaluate(v => { location.hash = v; }, v);
     await pg.waitForTimeout(150);
     const n = await pg.$$eval(`#v-${v} .frame`, fs => fs.length);
@@ -24,14 +24,15 @@ const fs = require('fs');
           if (e.scrollWidth > e.clientWidth + 1) out.push(`OVERFLOW-H ${e.scrollWidth - e.clientWidth}px :: ${name}`);
           if (e.classList.contains('bx')) {
             const top = parseFloat(e.style.top) / IN, h = parseFloat(e.style.height) / IN, l = parseFloat(e.style.left) / IN, w = parseFloat(e.style.width) / IN;
+            if (top < 0.94) out.push(`ABOVE-TOP ${top.toFixed(3)}in :: ${name}`);
             if (top + h > 6.751) out.push(`BELOW-B ${(top + h).toFixed(3)}in :: ${name}`);
             if (l < 0.457 || l + w > 12.959) out.push(`OUT-LR ${l.toFixed(3)}-${(l + w).toFixed(3)} :: ${name}`);
           }
         });
         const h = s.querySelector('.ph.head');
-        const r = document.createRange(); r.selectNodeContents(h);
+        if (h) { const r = document.createRange(); r.selectNodeContents(h);
         const rects = [...r.getClientRects()]; const tops = new Set(rects.map(x => Math.round(x.top)));
-        if (tops.size > 2) out.push(`HEADLINE ${tops.size} lines`);
+        if (tops.size > 2) out.push(`HEADLINE ${tops.size} lines`); }
         s.querySelectorAll('.bx, .bx *').forEach(e => {
           const fz = parseFloat(getComputedStyle(e).fontSize);
           const hasText = [...e.childNodes].some(c => c.nodeType === 3 && c.textContent.trim());

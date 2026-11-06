@@ -50,7 +50,7 @@ class Slide:
         return f'''<div class="slide" data-n="{self.num}">
   <div class="ph tag" style="left:{p(8.836)}px;top:{p(0.130)}px;width:{p(4.222)}px;height:{p(0.44)}px">{self.tag}</div>
   <div class="ph sub" style="left:{p(0.358)}px;top:{p(0.329)}px;width:{p(12.7)}px;height:{p(0.44)}px">{self.subhead}</div>
-  <div class="ph head" style="left:{p(0.358)}px;top:{p(0.816)}px;width:{p(12.7)}px;height:{p(0.84)}px">{self.headline}</div>
+  {"" if self.headline is None else f'<div class="ph head" style="left:{p(0.358)}px;top:{p(0.816)}px;width:{p(12.7)}px;height:{p(0.84)}px">{self.headline}</div>'}
   {"".join(self.els)}
   <div class="ph foot" style="left:{p(0.358)}px;top:{p(6.986)}px;width:{p(11.0)}px;height:{p(0.37)}px"><div>{"<br>".join(foot)}</div></div>
   <div class="ph logo" style="left:{p(11.348)}px;top:{p(7.148)}px;width:{p(1.25)}px;height:{p(0.236)}px">로고 · 템플릿 상속</div>
@@ -252,6 +252,7 @@ def brief():
     return out
 
 CSS = open(sys.argv[3], encoding="utf-8").read() if len(sys.argv) > 3 else ""
-data = {"study": [x.html() for x in study()], "brief": [x.html() for x in brief()]}
+from gen_v2 import brief2
+data = {"study": [x.html() for x in study()], "brief": [x.html() for x in brief()], "brief2": [x.html() for x in brief2(Slide, C, L, R, B, W, p, chip)]}
 json.dump(data, open(OUT, "w", encoding="utf-8"), ensure_ascii=False)
 print("ok", ROUND)
